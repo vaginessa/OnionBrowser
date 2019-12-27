@@ -71,7 +71,7 @@ import Foundation
             "--allow-missing-torrc",
             "--ignore-missing-torrc",
             "--clientonly", "1",
-            "--socksport", "39050",
+            "--socksport", "39050 IsolateSOCKSAuth NoIsolateDestPort NoIsolateDestAddr",
             "--controlport", "127.0.0.1:39060",
 //            "--HashedControlPassword", "16:1427783EE4FFA03B60A19E6625D3F28EC59943393CC80FABF3CC7FF18A",
             "--log", log_loc,
@@ -422,6 +422,14 @@ import Foundation
         self.torThread?.cancel()
         self.state = .stopped
     }
+	
+	func getCircInfo() {
+		if (self.torController != nil) {
+			self.torController?.getCurrentCircuit({ (nodes) in
+				print("\n\n\n==================\n\(nodes)\n==================")
+			})
+		}
+	}
 
     private func bridgeLinesToArgs(_ bridgeLines: [String]) -> [String] {
         var bridges: [String] = []

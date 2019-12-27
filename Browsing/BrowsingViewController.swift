@@ -124,6 +124,13 @@ class BrowsingViewController: UIViewController, TabDelegate {
 			}
 		}
 	}
+	
+	func tabCircuitId() -> String {
+		let host:String = currentTab?.url.host ?? ""
+		let tabIdStr="\(currentTabIndex);\(host)"
+		debug("\n\n\n=============\nTAB=\(tabIdStr)\n===============\n\n\n")
+		return tabIdStr
+	}
 
     var searchBarHeight: CGFloat!
     var toolbarHeight: CGFloat? // Not available on iPad
@@ -324,6 +331,8 @@ class BrowsingViewController: UIViewController, TabDelegate {
 	// MARK: TabDelegate
 
 	func updateChrome(_ sender: Tab? = nil) {
+		_ = tabCircuitId()
+		
 		debug("#updateChrome progress=\(currentTab?.progress ?? 1)")
 
 		if let progress = progress {

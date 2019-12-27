@@ -328,11 +328,14 @@ static JAHPQNSURLSessionDemux *sharedDemuxInstance = nil;
 	NSInteger socksProxyPort = AppDelegate.sharedAppDelegate.socksProxyPort;
 	NSInteger httpProxyPort = AppDelegate.sharedAppDelegate.httpProxyPort;
 	NSMutableDictionary *proxyDict = [@{} mutableCopy];
+	
 
 	if (socksProxyPort > 0) {
 		proxyDict[@"SOCKSEnable"] = @YES;
 		proxyDict[(NSString *)kCFStreamPropertySOCKSProxyHost] = proxyHost;
 		proxyDict[(NSString *)kCFStreamPropertySOCKSProxyPort] = [NSNumber numberWithInteger: socksProxyPort];
+		proxyDict[(NSString *)kCFStreamPropertySOCKSUser] = @"asdfid";
+		proxyDict[(NSString *)kCFStreamPropertySOCKSPassword] = @"asdfid";
 	}
 
 	if (httpProxyPort > 0) {

@@ -1,4 +1,5 @@
-binary "https://icepa.github.io/Tor.framework/Tor.json" == 400.5.1
-#github "iCepa/Tor.framework" "master"
+#binary "https://icepa.github.io/Tor.framework/Tor.json" == 400.5.1
+#github "iCepa/Tor.framework" "circuits"
+git "file:///Users/mtigas/Code/Tor.framework" "b89612cb44e9bd8955e3d916cfc3849d663dabf3"
 
 binary "https://cdn.tig.as/files/Iobfs4proxy.json" == 1.0
